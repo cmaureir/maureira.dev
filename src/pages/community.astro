@@ -1,0 +1,220 @@
+---
+import Breadcrumbs from '@/components/Breadcrumbs.astro'
+import Link from '@/components/Link.astro'
+import PageHead from '@/components/PageHead.astro'
+import ProjectCard from '@/components/ProjectCard.astro'
+import Layout from '@/layouts/Layout.astro'
+import { getAllProjects } from '@/lib/data-utils'
+
+const initiatives = [
+  {
+    "title": "Python Software Foundation (PSF)",
+    "subtitle": "The main non-profit organization behind Python",
+    "url": "https://python.org/psf-landing",
+    "img": "/static/python.png",
+    "description": `
+    Python Software Foundation is the non-profit organization devoted to
+    advancing open source technology related to the Python programming
+    language.  After running for the board of directors a couple of times,
+    I got elected as a PSF director in July 2024, from which I have been part
+    of, mainly working on <a
+    href="https://www.python.org/nominations/elections/2024-python-software-foundation-board/nominees/cristian-maureira-fredes/">my
+    own ideas</a>, and also helping in the <a href="https://us.pycon.org">PyCon
+    US</a> committee.
+    `
+  },
+  {
+    "title": "European Python Society (EPS)",
+    "subtitle": "The non-profit behind the main European Python conference",
+    "url": "https://europython-society.org",
+    "img": "/static/eps.png",
+    "description": `
+    EuroPython is the largest and oldest conference in Europe about Python.
+    After participating as a speaker a couple of times, I decided to join the
+    helping team by reviewing proposals in <a
+    href="https://ep2023.europython.eu">EP2023</a>, and later decided to join
+    the Programmee Team officially for EP2024.
+    `
+  },
+  {
+    "title": "Python Pizza Hamburg",
+    "subtitle": "Hamburg version of the micro-conference Python Pizza",
+    "url": "https://hamburg.python.pizza",
+    "img": "/static/pythonpizza.png",
+    "description": `
+    Python Pizza is a micro-conference focused on having a one-day event, with
+    10 minute talks, and with the social aspect of sharing pizza slices for
+    lunch/dinner, while listening to Python talks.  After participating as
+    speaker in a couple of editions in Berlin, Hamburg, and Holguín, I joined
+    the 2023 edition of Hamburg Python Pizza as a co-organizer.
+    `
+  },
+  {
+    "title": "Las PyCon Charlas",
+    "subtitle": "The Spanish Track at PyConUS",
+    "url": "https://us.pycon.org",
+    "img": "/static/pyconcharlas.png",
+    "description": `
+    PyCon Charlas is the Spanish track of the PyConUS conference, mainly
+    focused in Spanish speakers, due to the importance of the language in the
+    Python Community.  This initiative started in 2018, but I joined PyCon
+    Charlas as a co-chair in 2022 together with Naomi, and Denny. In 2023
+    I continued together with Denny as main track organizers, in charge of both
+    days of Spanish tracks in the largest Python conference in the world.
+    `
+  },
+  {
+    "title": "Python en Español",
+    "subtitle": "The largest Spanish-speaking Python community",
+    "url": "https://hablemospython.dev",
+    "img": "/static/hablemospython.png",
+    "description": `
+    After the birth of the main idea behind <a
+    href="https://hablemospython.dev">Python en Español</a>, we decided to
+    setup a Discord server to gather the Spanish speaking Python community
+    (more than 11000 people!).  My participation here has been mainly into the
+    advocacy of the initiative, promotion in different communities, being in
+    charge of the platform's <a
+    href="https://github.com/python-discord-es/bot">bot</a> and forming the
+    coordination team, and the <a
+    href="https://github.com/python-discord-es/web">website</a>.  Additionally,
+    I'm one of the moderators of the Telegram group.
+    `
+  },
+  {
+    "title": "Python Spain",
+    "subtitle": "The official Python community in Spain",
+    "url": "https://es.python.org",
+    "img": "/static/pythones.png",
+    "description": `
+      I joined as an official member of <strong>Python España</strong> in 2020, after
+      participating in some activities and organizing general
+      programming events. After helping with <a href="https://2022.es.pycon.org">PyConES2022</a>, I decided
+      to actively participating in the official initiatives from the
+      group, being part of the Communication and IT Working Group,
+      and <a href="https://2023.es.pycon.org">PyConES2023</a> organization team.
+    `
+  },
+  {
+    "title": "Python Chile",
+    "subtitle": "The official Python community in Chile",
+    "url": "https://pythonchile.cl",
+    "img": "/static/pythonchile.png",
+    "description": `
+    Together with 5 more people, we officially started the <a
+    href="https://pythonchile.cl">Python Chile</a> community, joining efforts
+    from groups in charge of different Python initiatives in Chile.  We decided
+    to formalize the group by doing our first event together, the <a
+    href="https://pyday.cl">PyDay Chile 2020</a>, which was a real success (<a
+    href="https://pythonchile.cl/blog/resumen-del-pyday-chile-2020/">read more
+    here</a>).  Many other events have been organized since then.  At the
+    moment we have a community with more than 2500 people in different
+    platforms, and a team of around 20 people actively helping with projects,
+    events and initiatives to promote Python in Chile.
+    `
+  },
+  {
+    "title": "PyLadies Berlin",
+    "subtitle": "The official Berlin PyLadies chapter",
+    "url": "https://berlin.pyladies.com",
+    "img": "/static/pyladiesberlin.png",
+    "description": `
+    PyLadies is a global organization in charge of empowering women and under
+    represented groups in tech.  After participating in some events from the <a
+    href="https://berlin.pyladies.com/">Berlin chapter</a>, I was able to start
+    helping the community as a mentor, and also with general discussion and
+    organizational aspects of the group.
+    `
+  },
+  {
+    "title": "Python Docs ES",
+    "subtitle": "The official Python documentation Spanish translation team",
+    "url": "https://python-docs-es.readthedocs.io/",
+    "img": "/static/pythondocses.png",
+    "description": `
+    At the beginning of 2020 I discovered the <a
+    href="https://python-docs-es.readthedocs.io/">Python Docs ES</a> initiative
+    thanks to a friend, and was motivated to translate one file from the C-API,
+    because it was a topic related to my job.  After the first contributions,
+    I really enjoyed the community and environment, and started to translate
+    more files, help other people, and developing complementary solutions for
+    the projects like a <a
+    href="https://github.com/cmaureir/python-docs-es-telegram-bot">Telegram
+    Bot</a>, Github Webhooks, improving the <a
+    href="https://python-docs-es.readthedocs.io/es/3.11/CONTRIBUTING.html">Getting
+    Started</a> contribution page, and even record some <a
+    href="https://www.youtube.com/watch?v=OgJQJXrWuu0&amp;list=PLma583Z70SlztPF8SitlWJZx3SW1aAePk">tutorial
+    videos</a>.
+    `
+  },
+]
+---
+
+<Layout>
+  <PageHead slot="head" title="Community" />
+  <Breadcrumbs items={[{ label: 'Community', icon: 'lucide:info' }]} />
+
+  <section>
+    <div class="min-w-full">
+      <h2 class="text-3xl">Community</h2>
+      <div class="prose mb-8">
+        <p class="mb-4">
+        Recently I have joined the
+        <Link
+        href="https://pypa.io"
+        class="text-foreground"
+        external
+        underline>PyPA</Link>
+        moderation team, and I'm currently helping with some
+        <Link
+        href="https://github.com/pypi/support/issues?q=is%3Aissue+cmaureir"
+        class="text-foreground"
+        external
+        underline>project/file size limit</Link>
+        for different PyPI projects.  In the past, I have helped
+        some organizations like
+        <Link
+        href="https://www.dataumbrella.org"
+        class="text-foreground"
+        external
+        underline>Data Umbrella</Link>
+        , <a href="https://pylatam.org">PyCon Latam</a>, and other
+        communities.
+        You can find most of my community-related activities on my
+        <Link
+        href="https://github.com/cmaureir/community-work"
+        class="text-foreground"
+        external
+        underline>Community Work</Link>
+        repository, where I take notes on a daily basis.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="min-w-full">
+      <h2 class="text-3xl mb-10">Organizations and Initiatives</h2>
+      <div class="prose mb-8">
+
+        {initiatives.map((item) => (
+        <div class="flex flex-col items-center shadow-sm md:flex-row md:max-w-4xl no-underline p-5 mb-5 rounded-lg border">
+          <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={ item.img } alt="">
+          <div>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{ item.title }</h5>
+            <h5 class="text-lg font-bold tracking-tight text-gray-700 dark:text-gray-200">{ item.subtitle }</h5>
+            <p class="mb-3 font-normal text-gray-800 dark:text-gray-200" set:html={ item.description }></p>
+            <a href={ item.url } class="rounded-lg border inline-flex max-w-26 items-center px-3 py-2 text-sm font-medium text-center text-black dark:text-white rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:hover:bg-gray-700 dark:focus:ring-blue-800 no-underline">
+              Visit site
+              <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        ))}
+
+      </div>
+    </div>
+  </section>
+</Layout>
