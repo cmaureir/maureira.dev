@@ -37,19 +37,6 @@ const initiatives = [
     `
   },
   {
-    "title": "Python Pizza Hamburg",
-    "subtitle": "Hamburg version of the micro-conference Python Pizza",
-    "url": "https://hamburg.python.pizza",
-    "img": "/static/pythonpizza.png",
-    "description": `
-    Python Pizza is a micro-conference focused on having a one-day event, with
-    10 minute talks, and with the social aspect of sharing pizza slices for
-    lunch/dinner, while listening to Python talks.  After participating as
-    speaker in a couple of editions in Berlin, Hamburg, and Holguín, I joined
-    the 2023 edition of Hamburg Python Pizza as a co-organizer.
-    `
-  },
-  {
     "title": "Las PyCon Charlas",
     "subtitle": "The Spanish Track at PyConUS",
     "url": "https://us.pycon.org",
@@ -79,6 +66,27 @@ const initiatives = [
     coordination team, and the <a
     href="https://github.com/python-discord-es/web">website</a>.  Additionally,
     I'm one of the moderators of the Telegram group.
+    `
+  },
+  {
+    "title": "Python Docs ES",
+    "subtitle": "The official Python documentation Spanish translation team",
+    "url": "https://python-docs-es.readthedocs.io/",
+    "img": "/static/pythondocses.png",
+    "description": `
+    At the beginning of 2020 I discovered the <a
+    href="https://python-docs-es.readthedocs.io/">Python Docs ES</a> initiative
+    thanks to a friend, and was motivated to translate one file from the C-API,
+    because it was a topic related to my job.  After the first contributions,
+    I really enjoyed the community and environment, and started to translate
+    more files, help other people, and developing complementary solutions for
+    the projects like a <a
+    href="https://github.com/cmaureir/python-docs-es-telegram-bot">Telegram
+    Bot</a>, Github Webhooks, improving the <a
+    href="https://python-docs-es.readthedocs.io/es/3.11/CONTRIBUTING.html">Getting
+    Started</a> contribution page, and even record some <a
+    href="https://www.youtube.com/watch?v=OgJQJXrWuu0&amp;list=PLma583Z70SlztPF8SitlWJZx3SW1aAePk">tutorial
+    videos</a>.
     `
   },
   {
@@ -127,24 +135,16 @@ const initiatives = [
     `
   },
   {
-    "title": "Python Docs ES",
-    "subtitle": "The official Python documentation Spanish translation team",
-    "url": "https://python-docs-es.readthedocs.io/",
-    "img": "/static/pythondocses.png",
+    "title": "Python Pizza Hamburg",
+    "subtitle": "Hamburg version of the micro-conference Python Pizza",
+    "url": "https://hamburg.python.pizza",
+    "img": "/static/pythonpizza.png",
     "description": `
-    At the beginning of 2020 I discovered the <a
-    href="https://python-docs-es.readthedocs.io/">Python Docs ES</a> initiative
-    thanks to a friend, and was motivated to translate one file from the C-API,
-    because it was a topic related to my job.  After the first contributions,
-    I really enjoyed the community and environment, and started to translate
-    more files, help other people, and developing complementary solutions for
-    the projects like a <a
-    href="https://github.com/cmaureir/python-docs-es-telegram-bot">Telegram
-    Bot</a>, Github Webhooks, improving the <a
-    href="https://python-docs-es.readthedocs.io/es/3.11/CONTRIBUTING.html">Getting
-    Started</a> contribution page, and even record some <a
-    href="https://www.youtube.com/watch?v=OgJQJXrWuu0&amp;list=PLma583Z70SlztPF8SitlWJZx3SW1aAePk">tutorial
-    videos</a>.
+    Python Pizza is a micro-conference focused on having a one-day event, with
+    10 minute talks, and with the social aspect of sharing pizza slices for
+    lunch/dinner, while listening to Python talks.  After participating as
+    speaker in a couple of editions in Berlin, Hamburg, and Holguín, I joined
+    the 2023 edition of Hamburg Python Pizza as a co-organizer.
     `
   },
 ]
@@ -199,7 +199,7 @@ const initiatives = [
 
         {initiatives.map((item) => (
         <div class="flex flex-col items-center shadow-sm md:flex-row md:max-w-4xl no-underline p-5 mb-5 rounded-lg border">
-          <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={ item.img } alt="">
+          <img class="object-cover md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={ item.img } alt="">
           <div>
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{ item.title }</h5>
             <h5 class="text-lg font-bold tracking-tight text-gray-700 dark:text-gray-200">{ item.subtitle }</h5>
