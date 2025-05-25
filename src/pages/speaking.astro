@@ -7,13 +7,286 @@ import Layout from '@/layouts/Layout.astro'
 import { getAllProjects } from '@/lib/data-utils'
 
 const talks = [
-{
-  "date": "February, 2022",
-  "type": "Talk",
-  "title": "Application UI",
-  "location": "Vilnius, Lithuania",
-  "event": "PyCon Lithuania",
-}
+  {
+    "title": "Diversity and Inclusion Panel: The Work Still Matters: Inclusion, Access, and Community in 2025",
+    "date": "May, 2025",
+    "type": "Panel,Keynote",
+    "location": "Pittsburgh, US",
+    "event": "PyCon US",
+    "url": "https://us.pycon.org/2025/about/keynote-speakers/#diversity-and-inclusion-panel"
+  },
+  {
+    "title": "Beyond the \"Hello, World!\": from the core to you!",
+    "date": "November, 2024",
+    "type": "Keynote",
+    "location": "Stockholm, Sweeden",
+    "event": "PyCon Sweeden",
+    "url": ""
+  },
+  {
+    "title": "Pythonizing Qt",
+    "date": "September, 2024",
+    "type": "Talk",
+    "location": "Würzburg, Germany",
+    "event": "Akademy",
+    "url": ""
+  },
+  {
+    "title": "The role of C++ in the Python ecossytem: the of the Qt framework",
+    "date": "July 2024",
+    "type": "Talk",
+    "location": "Prague, Czech Republic",
+    "event": "EuroPython",
+    "url": ""
+  },
+  {
+    "title": "Python's Secret Friends",
+    "date": "February 2024",
+    "type": "Talk",
+    "location": "Prague, Czech Republic",
+    "event": "Python Pizza Prague",
+    "url": "",
+  },
+  {
+    "title": "The role of Rust, Zig and C++ in the Python ecosystem",
+    "date": "April 2024",
+    "type": "Talk",
+    "location": "Vilnius, Lithuania",
+    "event": "PyCon Lithuania",
+    "url": ""
+  },
+  {
+    "title": "Python's hidden friends",
+    "date": "March 2024",
+    "type": "Talk, Meetup",
+    "location": "Berlin, Germany",
+    "event": "PyBerlin Meetup",
+    "url": ""
+  },
+  {
+    "title": "More languages in the Qt Project",
+    "date": "November 2023",
+    "type": "Talk",
+    "location": "Berlin, Germany",
+    "event": "Qt Contributor Summit",
+    "url": ""
+  },
+  {
+    "title": "El arte de extender Python con otros lenguajes",
+    "date": "November 2023",
+    "type": "Keynote",
+    "location": "Remote",
+    "event": "PyCon Chile",
+    "url": ""
+  },
+  {
+    "title": "The Role of Language Bindings in the Ftuure of the Qt Ecosystem",
+    "date": "November 2023",
+    "type": "Talk",
+    "location": "Berlin, Germany",
+    "event": "Qt World Summit",
+    "url": ""
+  },
+  {
+    "title": "What's new in Qt 6.6? and more!",
+    "date": "2023",
+    "type": "Talk",
+    "location": "Hannover, Germany",
+    "event": "GNUHealthCon",
+    "url": ""
+  },
+  {
+    "title": "CPython Survival Kit: basic C concepts to understand Python better",
+    "date": "2023",
+    "type": "Talk",
+    "location": "Coimbra, Portugal",
+    "event": "PyCon Portugal",
+    "url": ""
+  },
+  {
+    "title": "Python's stability promise",
+    "date": "July 2023",
+    "type": "Talk",
+    "location": "Prague, Czech Republic",
+    "event": "EuroPython",
+    "url": ""
+  },
+  {
+    "title": "Python in Slovak",
+    "date": "2023",
+    "type": "Lightning Talk",
+    "location": "Bratislava, Slovakia",
+    "event": "PyCon Slovakia",
+    "url": ""
+  },
+  {
+    "title": "Python in your language: code, documentation, and community",
+    "date": "2023",
+    "type": "Talk",
+    "location": "Remote",
+    "event": "PyJamas",
+    "url": ""
+  },
+  {
+    "title": "A deeper look into qt-project.org",
+    "date": "2022",
+    "type": "Talk",
+    "location": "Remote",
+    "event": "Qt Contributors Summit",
+    "url": ""
+  },
+  {
+    "title": "Python en tu lenguaje: código, documentación y comunidad",
+    "date": "2022",
+    "type": "Talk",
+    "location": "Remote",
+    "event": "PyCon Chile",
+    "url": ""
+  },
+  {
+    "title": "Aprendiendo sobre el núcleo de Python rompiéndolo todo",
+    "date": "2022",
+    "type": "Talk",
+    "location": "Granada, Spain",
+    "event": "PyCon España",
+    "url": ""
+  },
+  {
+    "title": "Viaje al core de Python: Entendiendo y hackeando Python",
+    "date": "2022",
+    "type": "Talk",
+    "location": "Remote",
+    "event": "PyCon Colombia",
+    "url": ""
+  },
+  {
+    "title": "Python en Español",
+    "date": "2022",
+    "type": "Lightning Talk",
+    "location": "Salt Lake City, US",
+    "event": "PyCon US",
+    "url": ""
+  },
+  {
+    "title": "Uniendo a las comunidades hispanohablantes de Python",
+    "date": "May 2022",
+    "type": "Talk",
+    "location": "Salt Lake City, US",
+    "event": "PyCon US",
+    "url": ""
+  },
+  {
+    "title": "Hybrid Qt Development: Boosting your projects with Python",
+    "date": "2021",
+    "type": "Talk",
+    "location": "Remote",
+    "event": "Qt World Summit",
+    "url": ""
+  },
+  {
+    "title": "Hackeando CPython de forma divertida",
+    "date": "2021",
+    "type": "Talk",
+    "location": "Remote",
+    "event": "PyCon España",
+    "url": ""
+  },
+  {
+    "title": "Learn CPython by breaking it",
+    "date": "2021",
+    "type": "Talk",
+    "location": "Remote",
+    "event": "EuroPython",
+    "url": ""
+  },
+  {
+    "title": "Más allá del \"Hola Mundo\"",
+    "date": "2020",
+    "type": "Talk",
+    "location": "Remote",
+    "event": "Python Pizza Holguín",
+    "url": ""
+  },
+  {
+    "title": "Embracing Python: From Prototypes to Hybrid Applications",
+    "date": "2020",
+    "type": "Talk",
+    "location": "Remote",
+    "event": "Qt Virtual Tech Conf",
+    "url": ""
+  },
+  {
+    "title": "C++ ♥ Python: from modules to hybrid applications",
+    "date": "2020",
+    "type": "Talk",
+    "location": "Remote",
+    "event": "PyCon US",
+    "url": ""
+  },
+  {
+    "title": "A dive into CPython",
+    "date": "2020",
+    "type": "Talk",
+    "location": "Hamburg, Germany",
+    "event": "Python Pizza Hamburg",
+    "url": ""
+  },
+  {
+    "title": "Write your first UI application with Python",
+    "date": "2020",
+    "type": "Meetup Talk",
+    "location": "San Francisco, US",
+    "event": "SF Python",
+    "url": ""
+  },
+  {
+    "title": "Python and C++: The Best of both worlds",
+    "date": "2020",
+    "type": "Talk",
+    "location": "Remote",
+    "event": "Qt World Summit",
+    "url": ""
+  },
+  {
+    "title": "How to bring your C++ project to Python land",
+    "date": "2019",
+    "type": "Talk",
+    "location": "Berlin, Germany",
+    "event": "Qt World Summit",
+    "url": ""
+  },
+  {
+    "title": "Qt for Python: an introduction",
+    "date": "2019",
+    "type": "Talk",
+    "location": "Berlin, Germany",
+    "event": "Qt World Summit",
+    "url": ""
+  },
+  {
+    "title": "Unleash the power of C++ in Python",
+    "date": "2019",
+    "type": "Talk",
+    "location": "Basel, Switzerland",
+    "event": "EuroPython",
+    "url": ""
+  },
+  {
+    "title": "Bring your C++ project to Python land",
+    "date": "2019",
+    "type": "Talk",
+    "location": "Berlin, Germany",
+    "event": "Python Pizza Berlin",
+    "url": ""
+  },
+  {
+    "title": "Mastering Qt for Python in 20 minutes",
+    "date": "2018",
+    "type": "Talk",
+    "location": "Berlin, Germany",
+    "event": "Qt World Summit",
+    "url": ""
+  }
 ]
 
 ---
@@ -30,14 +303,16 @@ const talks = [
         <li class="mb-10 ms-4">
           <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
           <time class="mb-1 text-sm font-normal leading-none text-gray-600 dark:text-gray-500">{ talk.date }</time>
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{ talk.title }</h3>
-          { talk.type.includes("Talk") && <span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300">Talk</span> }
-          { talk.type.includes("Keynote") && <span class="bg-purple-100 text-purple-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-purple-900 dark:text-purple-300">Purple</span> }
-          { talk.type.includes("Meetup")  && <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300">Red</span> }
-          { talk.type.includes("Webinar") && <span class="bg-purple-100 text-purple-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-purple-900 dark:text-purple-300">Purple</span> }
-          { talk.type.includes("Thesis")  && <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300">Green</span> }
-          { talk.type.includes("Podcast") && <span class="bg-pink-100 text-pink-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-pink-900 dark:text-pink-300">Pink</span> }
-          { talk.type.includes("Panel")   && <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-yellow-900 dark:text-yellow-300">Yellow</span> }
+          <a href={ talk.url }><h3 class="text-xl font-semibold text-gray-900 dark:text-white">{ talk.title }</h3></a>
+          { talk.type.includes("Talk")      && <span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300">Talk</span> }
+          { talk.type.includes("Keynote")   && <span class="bg-purple-100 text-purple-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-purple-900 dark:text-purple-300">Keynote</span> }
+          { talk.type.includes("Meetup")    && <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300">Meetup</span> }
+          { talk.type.includes("Video")     && <span class="bg-red-400 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-red-700 dark:text-red-300">Meetup</span> }
+          { talk.type.includes("Webinar")   && <span class="bg-purple-100 text-purple-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-purple-900 dark:text-purple-300">Webinar</span> }
+          { talk.type.includes("Thesis")    && <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300">Thesis</span> }
+          { talk.type.includes("Podcast")   && <span class="bg-pink-100 text-pink-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-pink-900 dark:text-pink-300">Podcast</span> }
+          { talk.type.includes("Panel")     && <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-yellow-900 dark:text-yellow-300">Panel</span> }
+          { talk.type.includes("Lightning") && <span class="bg-yellow-500 text-yellow-100 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-yellow-600 dark:text-black">Lightning Talk</span> }
           <p class="mb-4 text-base font-normal text-gray-800 dark:text-gray-200">
           { talk.event } @ { talk.location }
           </p>
