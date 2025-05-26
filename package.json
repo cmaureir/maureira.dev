@@ -43,6 +43,7 @@
     "remark-emoji": "^5.0.1",
     "remark-math": "^6.0.0",
     "remark-sectionize": "^2.1.0",
+    "sharp": "^0.34.2",
     "simple-icons-astro": "^14.12.3",
     "tailwind-merge": "^3.0.1",
     "tailwindcss": "^4.0.7",
