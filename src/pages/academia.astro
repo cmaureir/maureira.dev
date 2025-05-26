@@ -1,0 +1,177 @@
+---
+import Breadcrumbs from '@/components/Breadcrumbs.astro'
+import Link from '@/components/Link.astro'
+import PageHead from '@/components/PageHead.astro'
+import ProjectCard from '@/components/ProjectCard.astro'
+import Layout from '@/layouts/Layout.astro'
+import { getAllProjects } from '@/lib/data-utils'
+
+const projects = await getAllProjects()
+---
+
+<Layout>
+  <PageHead slot="head" title="Academia" />
+  <Breadcrumbs items={[{ label: 'Academia', icon: 'lucide:info' }]} />
+
+  <section>
+    <div class="min-w-full">
+      <h2 class="text-3xl mb-5">Academia</h2>
+      <div class="prose mb-8">
+      <p class="mb-4">
+      My academic experience is a bit limited because I decided to pursue an
+      industry job after I finished my doctoral studies, but still there are
+      many projects, research and experiences that are worth highlighting here.
+      </p>
+
+      <ul>
+        <li><a href="#oss">Open Source Projects</a></li>
+        <li><a href="#research">Research Projects</a></li>
+        <li><a href="#publications">Publications</a>
+        <ul>
+          <li><a href="#publications-astro">Astrophysics</a></li>
+          <li><a href="#publications-cs">Computer Science</a></li>
+        </ul>
+        </li>
+      </ul>
+
+      <div id="oss"></div>
+      <h2 class="text-2xl">Open Source Projects</h2>
+
+      <h3 class="text-xl">GraviDy</h3>
+      <p class="mb-4">
+      A direct-summation *N-*body integrator, which can be use in clusters/nodes with
+      different flavours of parallelism (OpenMP, MPI or CUDA).
+      It's based on the Hermite 4th order scheme, but can be extended to other
+      integration methods.
+      </p>
+
+      <ul>
+       <li>Web: <a href="https://gravidy.xyz">gravidy.xyz</a></li>
+       <li>Repo: <a href="https://gitlab.com/cmaureir/gravidy">gitlab.com/cmaureir/gravidy</a></li>
+      </ul>
+
+      <h3 class="text-xl">Gadget Snapshot Reader</h3>
+      <p class="mb-4">
+      Simple python module to read <a
+      href="http://wwwmpa.mpa-garching.mpg.de/gadget/">Gadget</a> snapshot
+      (type 1).
+      </p>
+
+      <ul>
+      <li>Repo: <a href="https://github.com/cmaureir/gadget-snapshot-reader">https://github.com/cmaureir/gadget-snapshot-reader</a></li>
+      </ul>
+
+      <div id="research"></div>
+      <h2 class="title-2xl">Research Projects</h2>
+
+      <p class="mb-4">
+      Here you can find the ideas of the <em>on-going</em> projects which I'm involved.
+      </p>
+
+      <h3 class="text-xl">Numerical modelling of Black holes binaries</h3>
+      <p class="mb-4">
+      Being the main topic of my PhD thesis, I'm currently involved in a few projects
+      that study the dynamical evolution of black hole binaries in gas rich environments,
+      but also considering the gas properties and how we can get some information
+      related to circum-binary structures.</p>
+      <p>For this topic, I use <a href="https://www.h-its.org/tap-software-en/gadget-code/">Gadget</a>,
+      which is a cosmological <em>N-</em>body/Smooth Particle Hydrodynamics code.
+      </p>
+      <p class="mb-4">
+      Currently, <em>two-papers</em> are in progress related to this topic,
+      which will be ready on 2017.
+      </p>
+      <p class="mb-4">
+      Collaborators: <em>F. Goicovic, L. del Valle, A. Sesana, M. Dotti, P. Amaro-Seoane</em>
+      </p>
+
+      <h3 class="text-xl">Dynamical evolution of Globular clusters</h3>
+      <p class="mb-4">
+      During my Master, I decided to study astrophysical simulation of <em>N-</em>body systems
+      which became the first project for my PhD.
+      I developed <a href="http://gravidy.xyz">GraviDy</a> to be able to have a well structured
+      code as base for future projects.
+      </p>
+
+      <p class="mb-4">
+      <strong>Collaborators</strong>: <a href="https://astro-gr.org">P. Amaro-Seoane</a>
+      </p>
+
+      <h3 class="text-xl">Medical Image Processing</h3>
+      <p class="mb-4">
+      Inmmunohistochemistry (IHC) analysis is a common practice to evaluate the
+      evolution of different types of cancer.
+      This process needs a biomarker to identify the cell membrane,
+      like the Human Epidermal growth factor Receptor 2 (HER2).
+      To study this images, one can use different texture features at a pixel-level,
+      to be able to get the changes in the cells and classify them.
+      </p>
+
+      <p class="mb-4">
+      I'm currently helping <a href="https://github.com/rpezoa"><em>Raquel Pezoa</em></a> on this project,
+      adapting a code that calculate the
+      <a href="https://github.com/rpezoa/haralick">Haralick texture features</a> of these images,
+      to run in a large HPC clusters.
+      </p>
+
+      <div id="publications"></div>
+      <h2 class="text-2xl">Publications</h2>
+
+      <div id="publications-astro"></div>
+      <h3 class="text-xl">Astrophysics</h3>
+      <ul>
+      <li>
+      <p><a href="https://arxiv.org/abs/1801.06179">Accretion of clumpy cold gas onto massive black hole binaries: the challenging formation of extended circumbinary structures</a>
+      <strong>C. Maureira-Fredes</strong>, F. G. Goicovic, A. Sesana, P. Amaro-Seoane
+      <em>(Monthly Notices of the Royal Astronomical Society, Volume 478, Issue 2, p1726-1748)</em>, 2018</p>
+      </li>
+      <li>
+      <p><a href="https://arxiv.org/abs/1801.04937">Accretion of clumpy cold gas onto massive black hole binaries: a possible fast route to binary coalescence</a>
+      F. G. Goicovic, <strong>C. Maureira-Fredes</strong>, P. Amaro-Seoane, A. Sesana
+      <em>(Monthly Notices of the Royal Astronomical Society, accepted)</em>, 2018</p>
+      </li>
+      <li>
+      <p><a href="https://arxiv.org/abs/1702.00440">GraviDy: a GPU modular, parallel <em>N-</em>body integrator</a>
+      <strong>C. Maureira-Fredes</strong>, P. Amaro-Seoane
+      <em>(Monthly Notices of the Royal Astronomical Society, Volume 473, Issue 3, p.3113-3127)</em>, 2018</p>
+      </li>
+      <li>
+      <p><a href="http://arxiv.org/abs/1604.01392">Retrograde binaries of massive black holes in circum-binary accretion discs</a>
+      P. Amaro-Seoane, <strong>C. Maureira-Fredes</strong>, M. Dotti, M. Colpi
+      <em>Astronomy &amp; Astrophysics, Volume 591, id.A114, 12 pp</em>, 2016</p>
+      </li>
+      <li>
+      <p><a href="http://arxiv.org/abs/1503.01664">Super massive black holes in star forming gaseous circumnuclear discs</a>
+      L. del Valle, A. Escala, <strong>C. Maureira-Fredes</strong>, J. Molina, J. Cuadra, P. Amaro-Seoane
+      <em>The Astrophysical Journal, Volume 811, Issue 1, article id. 59, 12 pp</em>, 2015</p>
+      </li>
+      </ul>
+      <div id="publications-cs"></div>
+      <h3>Computer Science</h3>
+      <ul>
+      <li>
+      <p><a href="http://www.proceedings.blucher.com.br/article-details/9322">A Feed Forward Neural Network in CUDA for a Financial Application</a>.
+      R. Bonvallet, <strong>C. Maureira</strong>, C. Fernández, P. Arce, A. Cañete.
+      <em>10th World Congress on Computational Mechanics</em>, 2014</p>
+      </li>
+      <li>
+      <p><a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?reload=true&amp;arnumber=6379709">Forecasting High Frequency Financial Time Series Using Parallel FFN with CUDA and ZeroMQ</a>.
+      P. Arce, <strong>C. Maureira</strong>, R. Bonvallet, C. Fernández.
+      <em>Information and Telecommunication Technologies (APSITT), 2012 9th Asia-Pacific Symposium on</em>, 2012</p>
+      </li>
+      <li>
+      <p><a href="http://proceedings.spiedigitallibrary.org/proceeding.aspx?articleid=751839">High performance graphical data trending in a distributed system</a>
+      <strong>C. Maureira</strong>, A. Hoffstadt, J. López, N. Troncoso, R. Tobar, H. von Brand
+      <em>Proc. SPIE 7740, Software and Cyberinfrastructure for Astronomy</em>, 2010</p>
+      </li>
+      <li>
+      <p><a href="http://proceedings.spiedigitallibrary.org/proceeding.aspx?articleid=1346716">Introducing high performance distributed logging service for ACS</a>
+      J. Avarias, J. López, <strong>C. Maureira</strong>, H. Sommer, G. Chiozzi
+      <em>Proc. SPIE 7740, Software and Cyberinfrastructure for Astronomy</em>, 2010</p>
+      </li>
+      </ul>
+
+      </div>
+    </div>
+  </section>
+</Layout>

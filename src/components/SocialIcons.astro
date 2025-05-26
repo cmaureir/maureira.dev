@@ -5,6 +5,8 @@ import { ICON_MAP } from '@/consts'
 import type { SocialLink } from '@/types'
 import { Icon } from 'astro-icon/components'
 
+//import { LinkedIn } from 'simple-icons-astro';
+
 interface Props {
   links: SocialLink[]
 }
@@ -12,7 +14,7 @@ interface Props {
 const { links } = Astro.props
 ---
 
-<ul class="flex flex-wrap gap-2" role="list">
+<ul class="flex flex-wrap gap-2 justify-center" role="list">
   {
     links.map(({ href, label }) => (
       <li>

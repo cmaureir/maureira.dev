@@ -1,0 +1,480 @@
+---
+import Breadcrumbs from '@/components/Breadcrumbs.astro'
+import Link from '@/components/Link.astro'
+import PageHead from '@/components/PageHead.astro'
+import ProjectCard from '@/components/ProjectCard.astro'
+import Layout from '@/layouts/Layout.astro'
+import { getAllProjects } from '@/lib/data-utils'
+
+const talks = [
+  {
+    "title": "Diversity and Inclusion Panel: The Work Still Matters: Inclusion, Access, and Community in 2025",
+    "date": "May, 2025",
+    "type": "Panel,Keynote",
+    "location": "Pittsburgh, US",
+    "event": "PyCon US",
+    "url": "https://us.pycon.org/2025/about/keynote-speakers/#diversity-and-inclusion-panel"
+  },
+  {
+    "title": "Beyond the \"Hello, World!\": from the core to you!",
+    "date": "November, 2024",
+    "type": "Keynote",
+    "location": "Stockholm, Sweeden",
+    "event": "PyCon Sweeden",
+    "url": "https://pretalx.com/pyconse-2024/talk/CCPCRS/"
+  },
+  {
+    "title": "Pythonizing Qt",
+    "date": "September, 2024",
+    "type": "Talk, Video",
+    "location": "Würzburg, Germany",
+    "event": "Akademy",
+    "url": "https://tube.kockatoo.org/w/vk9EDrjgGBQHgJb3y8W6AW"
+  },
+  {
+    "title": "The role of C++ in the Python ecossytem: the of the Qt framework",
+    "date": "July 2024",
+    "type": "Talk, Video",
+    "location": "Prague, Czech Republic",
+    "event": "EuroPython",
+    "url": "https://www.youtube.com/watch?v=1xMnoLn5cWA"
+  },
+  {
+    "title": "Python's Secret Friends",
+    "date": "February 2024",
+    "type": "Talk, Video",
+    "location": "Prague, Czech Republic",
+    "event": "Python Pizza Prague",
+    "url": "https://www.youtube.com/watch?v=KdFXjYURlws&t=2h12m25s",
+  },
+  {
+    "title": "The role of Rust, Zig and C++ in the Python ecosystem",
+    "date": "April 2024",
+    "type": "Talk, Video",
+    "location": "Vilnius, Lithuania",
+    "event": "PyCon Lithuania",
+    "url": "https://www.youtube.com/watch?v=gMibQdXnL70"
+  },
+  {
+    "title": "Python's hidden friends",
+    "date": "March 2024",
+    "type": "Talk, Meetup",
+    "location": "Berlin, Germany",
+    "event": "PyBerlin Meetup",
+    "url": "https://www.meetup.com/pyberlin/events/298879555"
+  },
+  {
+    "title": "#QtStories - Cristián Maureira-Fredes",
+    "date": "February 2024",
+    "type": "Podcast",
+    "location": "Remote",
+    "event": "Qt Stories",
+    "url": "https://www.youtube.com/watch?v=PzR9vQP8gUs"
+  },
+  {
+    "title": "More languages in the Qt Project",
+    "date": "November 2023",
+    "type": "Talk",
+    "location": "Berlin, Germany",
+    "event": "Qt Contributor Summit",
+    "url": "https://wiki.qt.io/More_languages_in_the_Qt_Project"
+  },
+  {
+    "title": "El arte de extender Python con otros lenguajes",
+    "date": "November 2023",
+    "type": "Keynote, Video",
+    "location": "Remote",
+    "event": "PyCon Chile",
+    "url": "https://www.youtube.com/watch?v=kUKdJwER8FM"
+  },
+  {
+    "title": "The Role of Language Bindings in the Ftuure of the Qt Ecosystem",
+    "date": "November 2023",
+    "type": "Talk, Video",
+    "location": "Berlin, Germany",
+    "event": "Qt World Summit",
+    "url": "https://www.youtube.com/watch?v=SKIU4gLLooA"
+  },
+  {
+    "title": "De las estrellas al Open Source",
+    "date": "October 2023",
+    "type": "Podcast, Video",
+    "location": "Remote",
+    "url": "https://www.youtube.com/watch?v=4QHa6aw0rRI"
+  },
+  {
+    "title": "What's new in Qt 6.6? and more!",
+    "date": "September 2023",
+    "type": "Talk",
+    "location": "Hannover, Germany",
+    "event": "GNUHealthCon",
+    "url": "https://www.gnuhealth.org/ghconferences/2023/presentations/GHCon2023-Saturday-01-Cristian-Maureira-Fredes-Whats_new_in_Qt_6.6.pdf"
+  },
+  {
+    "title": "CPython Survival Kit: basic C concepts to understand Python better",
+    "date": "September 2023",
+    "type": "Talk, Video",
+    "location": "Coimbra, Portugal",
+    "event": "PyCon Portugal",
+    "url": "https://www.youtube.com/watch?v=-KHeFoyCzSQ"
+  },
+  {
+    "title": "Github Open Source Viernes con Dr. Cristián Maureira-Fredes",
+    "date": "August 2023",
+    "type": "Podcast, Video",
+    "location": "Remote",
+    "url": "https://www.youtube.com/watch?v=aqyZWkUCNSU"
+  },
+  {
+    "title": "Python's stability promise",
+    "date": "July 2023",
+    "type": "Talk, Video",
+    "location": "Prague, Czech Republic",
+    "event": "EuroPython",
+    "url": "https://www.youtube.com/watch?v=iiBJF0kM-P8"
+  },
+  {
+    "title": "Python in Slovak",
+    "date": "March 2023",
+    "type": "Lightning Talk, Video",
+    "location": "Bratislava, Slovakia",
+    "event": "PyCon Slovakia",
+    "url": "https://www.youtube.com/watch?v=QAsWdqj690M&t=15m12s"
+  },
+  {
+    "title": "Creando módulos de Python con C y C++",
+    "date": "March 2023",
+    "type": "Meetup, Video",
+    "location": "Remote",
+    "event": "Boston Python",
+    "url": "https://www.youtube.com/watch?v=yCCON3t1Peo"
+  },
+  {
+    "title": "Python in your language: code, documentation, and community",
+    "date": "November 2022",
+    "type": "Talk, Video",
+    "location": "Remote",
+    "event": "PyJamas",
+    "url": "https://www.youtube.com/watch?v=JXqxR1caab8"
+  },
+  {
+    "title": "A deeper look into qt-project.org",
+    "date": "June 2022",
+    "type": "Talk, Video",
+    "location": "Remote",
+    "event": "Qt Contributors Summit",
+    "url": "https://www.youtube.com/watch?v=XA-bNfm5eqA"
+  },
+  {
+    "title": "Python en tu lenguaje: código, documentación y comunidad",
+    "date": "Diciembre 2022",
+    "type": "Talk, Video",
+    "location": "Remote",
+    "event": "PyCon Chile",
+    "url": "https://www.youtube.com/watch?v=fQgvSREpYS8"
+  },
+  {
+    "title": "Aprendiendo sobre el núcleo de Python rompiéndolo todo",
+    "date": "Septiembre 2022",
+    "type": "Talk, Video",
+    "location": "Granada, Spain",
+    "event": "PyCon España",
+    "url": "https://www.youtube.com/watch?v=bKLvyltEKV0"
+  },
+  {
+    "title": "Viaje al core de Python: Entendiendo y hackeando Python",
+    "date": "July 2022",
+    "type": "Talk, Video",
+    "location": "Remote",
+    "event": "PyCon Colombia",
+    "url": "https://www.youtube.com/watch?v=WjwyWbVbWzE"
+  },
+  {
+    "title": "Python en Español",
+    "date": "May 2022",
+    "type": "Lightning Talk, Video",
+    "location": "Salt Lake City, US",
+    "event": "PyCon US",
+    "url": "https://www.youtube.com/watch?v=xQ0-aSmn9ZA&t=20s"
+  },
+  {
+    "title": "Uniendo a las comunidades hispanohablantes de Python",
+    "date": "May 2022",
+    "type": "Talk, Video",
+    "location": "Salt Lake City, US",
+    "event": "PyCon US",
+    "url": "https://www.youtube.com/watch?v=Vc0GW3nuODY"
+  },
+  {
+    "title": "Charla motivacional - Proyecto Python en Español en Iberoamérica",
+    "date": "December 2021",
+    "type": "Podcast, Video",
+    "location": "Remote",
+    "event": "1000 Programadores Salteños",
+    "url": "https://www.youtube.com/watch?v=gI7S8l6UNmI"
+  },
+  {
+    "title": "Hybrid Qt Development: Boosting your projects with Python",
+    "date": "September 2021",
+    "type": "Talk, Video",
+    "location": "Remote",
+    "event": "Qt World Summit",
+    "url": "https://www.youtube.com/watch?v=SylgpRc-Lrg"
+  },
+  {
+    "title": "Hackeando CPython de forma divertida",
+    "date": "October 2021",
+    "type": "Talk, Video",
+    "location": "Remote",
+    "event": "PyCon España",
+    "url": "https://www.youtube.com/watch?v=xSsiu_pKduw"
+  },
+  {
+    "title": "Learn CPython by breaking it",
+    "date": "July 2021",
+    "type": "Talk, Video",
+    "location": "Remote",
+    "event": "EuroPython",
+    "url": "https://www.youtube.com/watch?v=WThKZDUt_UM"
+  },
+  {
+    "title": "Más allá del \"Hola Mundo\"",
+    "date": "December 2020",
+    "type": "Talk, Video",
+    "location": "Remote",
+    "event": "Python Pizza Holguín",
+    "url": "https://www.youtube.com/watch?v=_ZW_0fZwnGw"
+  },
+  {
+    "title": "Episode 4. Interview with Cristián Maureira",
+    "date": "December 2020",
+    "type": "Podcast, Video",
+    "location": "Remote",
+    "event": "PyBerlin Podcast",
+    "url": "https://www.youtube.com/watch?v=Zk6uga0LAOE"
+  },
+  {
+    "title": "A dive into CPython",
+    "date": "November 2020",
+    "type": "Talk",
+    "location": "Hamburg, Germany",
+    "event": "Python Pizza Hamburg",
+    "url": ""
+  },
+  {
+    "title": "Python and C++: The Best of both worlds",
+    "date": "November 2020",
+    "type": "Talk, Video",
+    "location": "Remote",
+    "event": "Qt World Summit",
+    "url": "https://www.youtube.com/watch?v=1ljPk7ZInRo"
+  },
+  {
+    "title": "Python and C++ interoperability with Shiboken",
+    "date": "August 2020",
+    "type": "Webinar, Video",
+    "location": "Remote",
+    "event": "Qt On-demand webinars",
+    "url": "https://www.youtube.com/watch?v=wOMlDutOWXI"
+  },
+  {
+    "title": "Design, Connect and Deploy",
+    "date": "July 2020",
+    "type": "Meetup, Video",
+    "location": "Remote",
+    "event": "Py101 Chile",
+    "url": "https://vimeo.com/439645255"
+  },
+  {
+    "title": "Embracing Python: From Prototypes to Hybrid Applications",
+    "date": "May 2020",
+    "type": "Talk, Video",
+    "location": "Remote",
+    "event": "Qt Virtual Tech Conf",
+    "url": "https://www.youtube.com/watch?v=Vb1dbLQafyM"
+  },
+  {
+    "title": "C++ ♥ Python: from modules to hybrid applications",
+    "date": "April 2020",
+    "type": "Talk, Video",
+    "location": "Remote",
+    "event": "PyCon US",
+    "url": "https://www.youtube.com/watch?v=klCfoGCwmMg"
+  },
+  {
+    "title": "Stars, black holes, and snakes",
+    "date": "March 2020",
+    "type": "Meetup, Video",
+    "location": "Remote",
+    "event": "PyData Berlin",
+    "url": "https://www.youtube.com/watch?v=5h--SRvYbYM"
+  },
+  {
+    "title": "How to bring your C++ project to Python land",
+    "date": "November 2019",
+    "type": "Talk, Video",
+    "location": "Berlin, Germany",
+    "event": "Qt World Summit",
+    "url": "https://www.youtube.com/watch?v=XmY-tWTi9gY"
+  },
+  {
+    "title": "Unleash the power of C++ in Python",
+    "date": "July 2019",
+    "type": "Talk, Video",
+    "location": "Basel, Switzerland",
+    "event": "EuroPython",
+    "url": "https://www.youtube.com/watch?v=02-IYuDQdTE"
+  },
+  {
+    "title": "Creating user interfaces with Qt for Python",
+    "date": "June 2019",
+    "type": "Webinar, Video",
+    "location": "Remote",
+    "event": "Qt On-demand webinars",
+    "url": "https://www.youtube.com/watch?v=wKqLaNqxgas"
+  },
+  {
+    "title": "Develop Your First Qt for Python Application",
+    "date": "June 2019",
+    "type": "Webinar, Video",
+    "location": "Remote",
+    "event": "Qt On-demand webinars",
+    "url": "https://www.youtube.com/watch?v=HDBjmSiOBxY"
+  },
+  {
+    "title": "Write your first UI application with Python",
+    "date": "May 2019",
+    "type": "Meetup, Video",
+    "location": "San Francisco, US",
+    "event": "SF Python",
+    "url": "https://www.youtube.com/watch?v=xz5oXLsecCM"
+  },
+  {
+    "title": "Golfing with Python",
+    "date": "April 2019",
+    "type": "Meetup",
+    "location": "Berlin, Germany",
+    "event": "Python Users Berlin (PUB)",
+    "url": ""
+
+  },
+  {
+    "title": "Bring your C++ project to Python land",
+    "date": "February 2019",
+    "type": "Talk",
+    "location": "Berlin, Germany",
+    "event": "Python Pizza Berlin",
+    "url": ""
+  },
+  {
+    "title": "Qt for Python: an introduction",
+    "date": "December 2018",
+    "type": "Talk, Video",
+    "location": "Berlin, Germany",
+    "event": "Qt World Summit",
+    "url": "https://www.youtube.com/watch?v=214TWASZVgA"
+  },
+  {
+    "title": "Mastering Qt for Python in 20 minutes",
+    "date": "December 2018",
+    "type": "Talk, Video",
+    "location": "Berlin, Germany",
+    "event": "Qt World Summit",
+    "url": "https://www.youtube.com/watch?v=IhxZ99usPqY"
+  },
+  {
+    "title": "Qt for Python",
+    "date": "October 2018",
+    "type": "Podcast, Audio",
+    "location": "Remote",
+    "event": "Talk Python Podcast",
+    "url": "https://talkpython.fm/episodes/show/183/qt-for-python"
+  },
+  {
+    "title": "An introduction to Qt for Python",
+    "date": "September 2018",
+    "type": "Meetup",
+    "location": "Berlin, Germany",
+    "event": "Python Users Berlin (PUB)",
+    "url": ""
+  },
+  {
+    "title": "Doctoral thesis: Black hole binary systems, from dynamics to accretion",
+    "date": "June 2018",
+    "type": "Talk, Thesis",
+    "location": "Hannover, Germany",
+    "event": "Fakultät für Mathematik und Physik, Leibniz Universität Hannover",
+    "url": "",
+  },
+  {
+    "title": "Master thesis: A Modular, GPU-based, Direct-summation N-body Integrator",
+    "date": "July 2013",
+    "type": "Talk, Thesis",
+    "location": "Valparaiso, Chile",
+    "event": "Departamento de Informática, Universidad Técnica Federico Santa María",
+    "url": ""
+  },
+  {
+    "title": "USM - ALMA Collaboration",
+    "date": "August 2012",
+    "type": "Video",
+    "location": "Valparaiso, Chile",
+    "event": "University Interview",
+    "url": "https://www.youtube.com/watch?v=aeerH2zfK-c"
+  },
+  {
+    "title": "Experiencias prácticas ALMA-UTFSM",
+    "date": "May 2010",
+    "type": "Video",
+    "location": "Valparaiso, Chile",
+    "event": "University talks",
+    "url": "https://www.youtube.com/watch?v=FAUoICji-t4",
+  }
+]
+
+---
+
+<Layout>
+  <PageHead slot="head" title="Speaking" />
+  <Breadcrumbs items={[{ label: 'Speaking', icon: 'lucide:info' }]} />
+
+  <section>
+    <div class="min-w-full">
+      <h2 class="text-3xl mb-5">Speaking</h2>
+      <p class="mb-5">
+      Here you can find a list of all the talks, podcasts, and panels that I had the opportunity to speak
+      publicly. Most of these talks have been held in Python and Tech events in different countries around
+      the world, and also in online events.
+      </p>
+      <p class="mb-5">
+      Some of the talks have no recording, so there is no records, but in most cases you can find the ones with
+      the <span class="bg-red-400 text-white text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-red-700 dark:text-red-100">Video</span>
+      badge to watch the recording.
+      </p>
+      <ol class="relative border-s border-gray-200 dark:border-gray-700">
+
+        {talks.map((talk) => (
+        <li class="mb-5 ms-4">
+          <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+          <time class="mb-1 text-sm font-normal leading-none text-gray-600 dark:text-gray-300">{ talk.date }</time>
+          <a target="_blank" href={ talk.url }><h3 class="text-xl font-semibold text-gray-900 dark:text-white">{ talk.title }</h3></a>
+          { talk.type.includes("Talk")      && <span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300">Talk</span> }
+          { talk.type.includes("Keynote")   && <span class="bg-purple-100 text-purple-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-purple-900 dark:text-purple-100">Keynote</span> }
+          { talk.type.includes("Meetup")    && <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-200">Meetup</span> }
+          { talk.type.includes("Video")     && <span class="bg-red-400 text-white text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-red-700 dark:text-red-100">Video</span> }
+          { talk.type.includes("Audio")     && <span class="bg-green-400 text-white text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-green-700 dark:text-red-300">Audio</span> }
+          { talk.type.includes("Webinar")   && <span class="bg-purple-100 text-purple-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-purple-900 dark:text-purple-300">Webinar</span> }
+          { talk.type.includes("Thesis")    && <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300">Thesis</span> }
+          { talk.type.includes("Podcast")   && <span class="bg-pink-100 text-pink-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-pink-900 dark:text-pink-100">Podcast</span> }
+          { talk.type.includes("Panel")     && <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-yellow-900 dark:text-yellow-300">Panel</span> }
+          { talk.type.includes("Lightning") && <span class="bg-yellow-500 text-yellow-100 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-yellow-600 dark:text-black">Lightning Talk</span> }
+          <p class="mt-2 text-base font-normal text-gray-800 dark:text-gray-200">
+          { talk.event } @ { talk.location }
+          </p>
+        </li>
+        ))}
+
+      </ol>
+    </div>
+  </section>
+</Layout>

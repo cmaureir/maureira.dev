@@ -1,14 +1,14 @@
 import type { IconMap, SocialLink, Site } from '@/types'
 
 export const SITE: Site = {
-  title: 'astro-erudite',
+  title: 'Cristián',
   description:
     'astro-erudite is a opinionated, unstyled blogging template—built with Astro, Tailwind, and shadcn/ui.',
-  href: 'https://astro-erudite.vercel.app',
+  href: 'https://maureira.dev',
   author: 'jktrn',
   locale: 'en-US',
   featuredPostCount: 2,
-  postsPerPage: 3,
+  postsPerPage: 10,
 }
 
 export const NAV_LINKS: SocialLink[] = [
@@ -17,8 +17,16 @@ export const NAV_LINKS: SocialLink[] = [
     label: 'blog',
   },
   {
-    href: '/authors',
-    label: 'authors',
+    href: '/community',
+    label: 'community',
+  },
+  {
+    href: '/speaking',
+    label: 'speaking',
+  },
+  {
+    href: '/academia',
+    label: 'academia',
   },
   {
     href: '/about',
@@ -28,16 +36,36 @@ export const NAV_LINKS: SocialLink[] = [
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
-    href: 'https://github.com/jktrn',
-    label: 'GitHub',
+    href: 'https://mastodon.social/@cmaureir',
+    label: 'Mastodon',
   },
   {
-    href: 'https://twitter.com/enscry',
+    href: 'https://bsky.app/profile/cmaureir.bsky.social',
+    label: 'Bluesky',
+  },
+  {
+    href: 'https://twitter.com/cmaureir',
     label: 'Twitter',
   },
   {
-    href: 'mailto:jason@enscribe.dev',
-    label: 'Email',
+    href: 'https://discordapp.com/users/328111103923978240',
+    label: 'Discord',
+  },
+  {
+    href: 'https://github.com/cmaureir',
+    label: 'GitHub',
+  },
+  {
+    href: 'https://gitlab.com/cmaureir',
+    label: 'Gitlab',
+  },
+  {
+    href: 'https://discordapp.com/users/328111103923978240',
+    label: 'Discord',
+  },
+  {
+    href: 'https://linkedin.com/in/cmaureir',
+    label: 'LinkedIn',
   },
   {
     href: '/rss.xml',
@@ -48,6 +76,10 @@ export const SOCIAL_LINKS: SocialLink[] = [
 export const ICON_MAP: IconMap = {
   Website: 'lucide:globe',
   GitHub: 'lucide:github',
+  Gitlab: 'lucide:gitlab',
+  Mastodon: 'simple-icons:mastodon',
+  Bluesky: 'simple-icons:bluesky',
+  Discord: 'simple-icons:discord',
   LinkedIn: 'lucide:linkedin',
   Twitter: 'lucide:twitter',
   Email: 'lucide:mail',
