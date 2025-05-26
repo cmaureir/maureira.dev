@@ -15,10 +15,10 @@ const blog = await getRecentPosts(SITE.featuredPostCount)
   <PageHead slot="head" title="Home" />
   <section>
     <div class="rounded-lg border h-[50dvh] flex flex-col place-content-center text-center">
-    <img class="mx-auto rounded-full h-[15dvh] my-10 grayscale" src="/static/me.jpg"/>
-    <h2 class="text-xl">Hello 👋 my name is</h2>
-    <h1 class="text-5xl py-5">Cristián</h1>
-    <h2 class="text-xl pb-10">
+    <a href="/about"><img class="mx-auto rounded-full h-[15dvh] my-10 grayscale hover:grayscale-0" src="/static/me.jpg"/></a>
+    <h2 class="xl:text-xl lg:text-md md:text-sm text-lg">Hello 👋 my name is</h2>
+    <h1 class="xl:text-5xl lg:text-3xl md:text-3xl text-2xl py-5">Cristián</h1>
+    <h2 class="xl:text-xl lg:text-md md:text-sm pb-10">
       I'm a FLOSS enthusiast,<br>helping with conferences and communities.<br>
       Currently working at Qt.
     </h2>
