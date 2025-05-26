@@ -40,7 +40,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
     label: 'Mastodon',
   },
   {
-    href: 'https://bsky.app/profile/cmaureir.bsky.social',
+    href: 'https://bsky.app/profile/maureira.dev',
     label: 'Bluesky',
   },
   {
