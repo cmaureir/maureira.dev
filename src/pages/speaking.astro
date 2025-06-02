@@ -6,12 +6,44 @@ import Layout from '@/layouts/Layout.astro'
 
 const talks = [
   {
+    "title": "★ The role of new languages in the Future of the Qt Ecosystem",
+    "date": "September, 2025",
+    "type": "Talk,Upcoming",
+    "location": "Kongsberg, Norway",
+    "event": "NDC TechTown 2025",
+    "url": "https://ndctechtown.com/agenda/the-role-of-new-languages-in-the-future-of-the-qt-ecosystem-0eky/0homhid9uk3",
+  },
+  {
+    "title": "★ Understanding and expanding Python: hand-on experience with the Python internals",
+    "date": "July, 2025",
+    "type": "Tutorial,Upcoming",
+    "location": "Cascais, Portugal",
+    "event": "PyCon Portugal",
+    "url": "",
+  },
+  {
+    "title": "★ What comes after Rust in the Python ecosystem?",
+    "date": "July, 2025",
+    "type": "Talk,Upcoming",
+    "location": "Prague, Czech Republic",
+    "event": "Euro Python 2025",
+    "url": "https://ep2025.europython.eu/session/what-comes-after-rust-in-the-python-ecosystem",
+  },
+  {
+    "title": "Understanding Python from the inside: C concepts to dive into CPython fearless",
+    "date": "May, 2025",
+    "type": "Talk,Video",
+    "location": "Bologna, Italy",
+    "event": "PyCon Italy",
+    "url": "https://www.youtube.com/watch?v=pAnun46-fwE&t=23956s"
+  },
+  {
     "title": "Diversity and Inclusion Panel: The Work Still Matters: Inclusion, Access, and Community in 2025",
     "date": "May, 2025",
-    "type": "Panel,Keynote",
+    "type": "Panel,Keynote,Video",
     "location": "Pittsburgh, US",
     "event": "PyCon US",
-    "url": "https://us.pycon.org/2025/about/keynote-speakers/#diversity-and-inclusion-panel"
+    "url": "https://www.youtube.com/watch?v=SQAX4P59u8w",
   },
   {
     "title": "Beyond the \"Hello, World!\": from the core to you!",
@@ -457,6 +489,7 @@ const talks = [
           <time class="mb-1 text-sm font-normal leading-none text-gray-600 dark:text-gray-300">{ talk.date }</time>
           <a target="_blank" href={ talk.url }><h3 class="text-xl font-semibold text-gray-900 dark:text-white">{ talk.title }</h3></a>
           { talk.type.includes("Talk")      && <span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300">Talk</span> }
+          { talk.type.includes("Tutorial")  && <span class="bg-blue-300 text-black text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-700 dark:text-blue-100">Tutorial</span> }
           { talk.type.includes("Keynote")   && <span class="bg-purple-100 text-purple-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-purple-900 dark:text-purple-100">Keynote</span> }
           { talk.type.includes("Meetup")    && <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-200">Meetup</span> }
           { talk.type.includes("Video")     && <span class="bg-red-400 text-white text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-red-700 dark:text-red-100">Video</span> }
@@ -464,8 +497,9 @@ const talks = [
           { talk.type.includes("Webinar")   && <span class="bg-purple-100 text-purple-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-purple-900 dark:text-purple-300">Webinar</span> }
           { talk.type.includes("Thesis")    && <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300">Thesis</span> }
           { talk.type.includes("Podcast")   && <span class="bg-pink-100 text-pink-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-pink-900 dark:text-pink-100">Podcast</span> }
-          { talk.type.includes("Panel")     && <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-yellow-900 dark:text-yellow-300">Panel</span> }
+          { talk.type.includes("Panel")     && <span class="bg-yellow-200 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-yellow-900 dark:text-yellow-300">Panel</span> }
           { talk.type.includes("Lightning") && <span class="bg-yellow-500 text-yellow-100 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-yellow-600 dark:text-black">Lightning Talk</span> }
+          { talk.type.includes("Upcoming")  && <span class="bg-yellow-500 text-red text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-yellow-300 dark:text-black">Upcoming ★</span> }
           <p class="mt-2 text-base font-normal text-gray-800 dark:text-gray-200">
           { talk.event } @ { talk.location }
           </p>
