@@ -60,10 +60,6 @@ export const SOCIAL_LINKS: SocialLink[] = [
     label: 'Gitlab',
   },
   {
-    href: 'https://discordapp.com/users/328111103923978240',
-    label: 'Discord',
-  },
-  {
     href: 'https://linkedin.com/in/cmaureir',
     label: 'LinkedIn',
   },
