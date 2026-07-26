@@ -6,6 +6,54 @@ import Layout from '@/layouts/Layout.astro'
 
 const talks = [
   {
+    "title": "¿Qué viene después de Rust en el ecosistema Python?",
+    "date": "November, 2026",
+    "type": "Talk,Upcoming",
+    "location": "Barcelona, Spain",
+    "event": "PyCon ES 2026",
+    "url": "https://pretalx.com/pycones-2026/talk/GXFMUV/",
+  },
+  {
+    "title": "Rust's Influence on C++ and Python: Shaping the Future of Three Communities",
+    "date": "October, 2026",
+    "type": "Highlighted Talk,Upcoming",
+    "location": "Barcelona, Spain",
+    "event": "EuroRust 2026",
+    "url": "https://eurorust.eu/talks/rust-s-influence-on-c-and-python-shaping-the-future-of-three-communities/",
+  },
+  {
+    "title": "On Astrophysics, Communities, and Python",
+    "date": "October, 2026",
+    "type": "Keynote,Upcoming",
+    "location": "Athens, Greece",
+    "event": "PyConGR 2026",
+    "url": "https://2026.pycon.gr/en/",
+  },
+  {
+    "title": "Understand and expand Python: a hands-on experience on Python internals",
+    "date": "July, 2026",
+    "type": "Tutorial",
+    "location": "Krákow, Poland",
+    "event": "EuroPython 2026",
+    "url": "https://ep2026.europython.eu/session/understand-and-expand-python-a-hands-on-experience-on-python-internals",
+  },
+  {
+    "title": "Qt for Python: A Practical Overview for Scientific Applications",
+    "date": "May, 2026",
+    "type": "Talk",
+    "location": "Synchrotron SOLEIL, France",
+    "event": "TAURUS Workshop",
+    "url": "https://indico.synchrotron-soleil.fr/event/166/timetable/?print=1&view=standard_inline_minutes#16-qt-for-python-a-practical-o",
+  },
+  {
+    "title": "The Art of Extending Python with other languages",
+    "date": "May, 2026",
+    "type": "Talk",
+    "location": "Long Beach, US",
+    "event": "PyCon US 2026",
+    "url": "https://us.pycon.org/2026/schedule/presentation/171/",
+  },
+  {
     "title": "The role of new languages in the Future of the Qt Ecosystem",
     "date": "September, 2025",
     "type": "Talk,Video",
@@ -515,6 +563,7 @@ const talks = [
           { talk.type.includes("Talk")      && <span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300">Talk</span> }
           { talk.type.includes("Tutorial")  && <span class="bg-orange-300 text-black text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-orange-700 dark:text-blue-100">Tutorial</span> }
           { talk.type.includes("Keynote")   && <span class="bg-purple-100 text-purple-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-purple-900 dark:text-purple-100">Keynote</span> }
+          { talk.type.includes("Highlighted Talk")   && <span class="bg-purple-100 text-purple-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-purple-900 dark:text-purple-100">Highlighted Talk</span> }
           { talk.type.includes("Meetup")    && <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-200">Meetup</span> }
           { talk.type.includes("Video")     && <span class="bg-red-400 text-white text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-red-700 dark:text-red-100">Video</span> }
           { talk.type.includes("Audio")     && <span class="bg-green-400 text-white text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-green-700 dark:text-red-300">Audio</span> }
