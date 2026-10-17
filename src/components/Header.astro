@@ -31,8 +31,10 @@ import logo from '../../public/static/logo.svg'
           ))
         }
       </nav>
-      <MobileMenu client:load transition:persist />
-      <ThemeToggle transition:persist />
+      <!-- No transition:persist here: the whole <header> is already persisted,
+           and nested persisted elements break the ClientRouter swap. -->
+      <MobileMenu client:load />
+      <ThemeToggle />
     </div>
   </div>
 </header>
