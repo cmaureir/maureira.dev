@@ -5,7 +5,7 @@ export const SITE: Site = {
   description:
     'Cristián Maureira-Fredes personal website',
   href: 'https://maureira.dev',
-  author: 'jktrn',
+  author: 'Cristián Maureira-Fredes',
   locale: 'en-US',
   featuredPostCount: 2,
   postsPerPage: 10,
@@ -71,13 +71,13 @@ export const SOCIAL_LINKS: SocialLink[] = [
 
 export const ICON_MAP: IconMap = {
   Website: 'lucide:globe',
-  GitHub: 'lucide:github',
-  Gitlab: 'lucide:gitlab',
+  GitHub: 'simple-icons:github',
+  Gitlab: 'simple-icons:gitlab',
   Mastodon: 'simple-icons:mastodon',
   Bluesky: 'simple-icons:bluesky',
   Discord: 'simple-icons:discord',
-  LinkedIn: 'lucide:linkedin',
-  Twitter: 'lucide:twitter',
+  LinkedIn: 'simple-icons:linkedin',
+  Twitter: 'simple-icons:twitter',
   Email: 'lucide:mail',
-  RSS: 'lucide:rss',
+  RSS: 'simple-icons:rss',
 }

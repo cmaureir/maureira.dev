@@ -3,16 +3,25 @@ import Breadcrumbs from '@/components/Breadcrumbs.astro'
 import Link from '@/components/Link.astro'
 import PageHead from '@/components/PageHead.astro'
 import Layout from '@/layouts/Layout.astro'
+
+// Places and projects mentioned above, in the order they happened.
+const logos: { src: string; alt: string; href: string; class?: string }[] = [
+  { src: '/static/utfsm.png', alt: 'Universidad Técnica Federico Santa María', href: 'https://usm.cl' },
+  { src: '/static/aei.png', alt: 'Max-Planck-Institut für Gravitationsphysik (Albert Einstein Institute)', href: 'https://aei.mpg.de' },
+  // wide logo: a shorter height keeps its visual weight close to the others
+  { src: '/static/luh.png', alt: 'Leibniz Universität Hannover', href: 'https://www.uni-hannover.de', class: 'h-10' },
+  { src: '/static/qt.png', alt: 'The Qt Company', href: 'https://qt.io' },
+]
 ---
 
 <Layout>
   <PageHead slot="head" title="About" />
   <Breadcrumbs items={[{ label: 'About', icon: 'lucide:info' }]} />
 
-  <img src="/static/me_qt.jpg" />
+  <img src="/static/me_qt.jpg" alt="Silhouette of Cristián in profile" />
   <section>
     <div class="min-w-full">
-      <h2 class="text-3xl mb-5">About</h2>
+      <h1 class="text-3xl mb-5">About</h1>
       <div class="prose mb-8">
         <p class="mb-4">
         My name is Cristián, and I am currently working at
@@ -28,9 +37,8 @@ import Layout from '@/layouts/Layout.astro'
           class="text-foreground"
           external
           underline>Qt for Python</Link>
-        project, project where I'm one of the developers focusing my work
-        mainly on PySide.
-        In April 2025, I started to work as the Technical Lead of the
+        project, where I'm one of the developers, focusing mainly on PySide.
+        In April 2025, I started working as the Technical Lead of the
         <Link
           href="https://qt.io/qt-bridges"
           class="text-foreground"
@@ -40,26 +48,23 @@ import Layout from '@/layouts/Layout.astro'
         </p>
 
         <p class="mb-4">
-        I spent most of my spare time in Open Source initiatives, mainly
-        focused in Python. Besides being the co-organizer of
+        I spend most of my spare time on Open Source initiatives, mainly
+        focused on Python. Besides being the co-organizer of
         <Link
           href="https://pythonchile.cl"
           class="text-foreground"
           external
-          underline>Python Chile</Link>
-        , I am also associated to
+          underline>Python Chile</Link>, I am also a member of
         <Link
           href="https://es.python.org"
           class="text-foreground"
           external
-          underline>Python España</Link>
-        , and with many people we started an initiative called
+          underline>Python España</Link>, and together with many others, we started an initiative called
         <Link
           href="https://hablemospython.dev"
           class="text-foreground"
           external
-          underline>Python en Español</Link>
-        , which aims to be a central place for the whole Spanish Speaking
+          underline>Python en Español</Link>, which aims to be a central place for the whole Spanish-speaking
         Python community.
         For a few years, I have been helping with the
         <Link
@@ -72,9 +77,8 @@ import Layout from '@/layouts/Layout.astro'
           href="https://europython-society.org"
           class="text-foreground"
           external
-          underline>European Python Society</Link>
-        .
-        I got elected as a
+          underline>European Python Society</Link>.
+        I was elected as a
         <Link
           href="https://python.org/psf"
           class="text-foreground"
@@ -85,8 +89,7 @@ import Layout from '@/layouts/Layout.astro'
           href="https://pyfound.blogspot.com/2024/07/announcing-2024-psf-board-election.html"
           class="text-foreground"
           external
-          underline>July 2024</Link>
-        , which is a role I still have, and was elected as Vice-Chair in 2025.
+          underline>July 2024</Link>, a role I still hold, and became Vice-Chair in 2025.
         </p>
 
         <p class="mb-4">
@@ -95,31 +98,47 @@ import Layout from '@/layouts/Layout.astro'
           href="https://aei.mpg.de"
           class="text-foreground"
           external
-          underline>Max-Planck-Institut für Gravitationsphysik (Albert-Einstein-Institute)</Link>
-        , working on the numerical modeling of Black Holes binaries, and
-        Globular clusters. To achieve this, I performed astrophysical N-body
-        and SPH simulations, using High Performance Computing resources and
+          underline>Max-Planck-Institut für Gravitationsphysik (Albert Einstein Institute)</Link>, working on the numerical modelling of black hole binaries and
+        globular clusters. To achieve this, I performed astrophysical N-body
+        and SPH simulations, using high-performance computing resources and
         tools, mainly GPU computing.
         </p>
 
         <p class="mb-4">
-        In the past I got my Engineer and Master degree in Informatics
+        Before that, I earned my Engineering and Master's degrees in Informatics
         (Computer Science) at the
         <Link
           href="https://usm.cl"
           class="text-foreground"
           external
           underline>Universidad Técnica Federico Santa María</Link>
-        in Chile, from which I got the motivation of working with applied HPC
+        in Chile, where I became motivated to work with applied HPC
         simulations.
         </p>
 
         <p class="mb-4">
         Check the <a href="/community">community work</a> that I'm currently
-        involved with, and also most of the research work during my <a
-        href="/academia">Academia period</a>.
+        involved with, and also most of the research work from my <a
+        href="/academia">academic period</a>.
         </p>
       </div>
+
+      <ul class="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 mb-8" role="list">
+        {
+          logos.map((logo) => (
+            <li>
+              <Link href={logo.href} external title={logo.alt}>
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  loading="lazy"
+                  class:list={[logo.class ?? 'h-16', 'w-auto object-contain grayscale transition duration-300 hover:grayscale-0']}
+                />
+              </Link>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </section>
 </Layout>

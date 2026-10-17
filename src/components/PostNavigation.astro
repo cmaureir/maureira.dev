@@ -16,6 +16,7 @@ const { prevPost, nextPost } = Astro.props
       !nextPost && 'pointer-events-none opacity-50 cursor-not-allowed',
     )}
     aria-disabled={!nextPost}
+    tabindex={nextPost ? undefined : -1}
   >
     <Icon
       name="lucide:arrow-left"
@@ -36,6 +37,7 @@ const { prevPost, nextPost } = Astro.props
       !prevPost && 'pointer-events-none opacity-50 cursor-not-allowed',
     )}
     aria-disabled={!prevPost}
+    tabindex={prevPost ? undefined : -1}
   >
     <div class="flex flex-col items-end overflow-hidden text-wrap">
       <span class="text-muted-foreground text-right text-xs">Previous Post</span

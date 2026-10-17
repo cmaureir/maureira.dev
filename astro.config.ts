@@ -6,14 +6,13 @@ import sitemap from '@astrojs/sitemap'
 import icon from 'astro-icon'
 
 import expressiveCode from 'astro-expressive-code'
-import { rehypeHeadingIds } from '@astrojs/markdown-remark'
+import { rehypeHeadingIds, unified } from '@astrojs/markdown-remark'
 import rehypeExternalLinks from 'rehype-external-links'
 import rehypeKatex from 'rehype-katex'
 import rehypePrettyCode from 'rehype-pretty-code'
 import remarkEmoji from 'remark-emoji'
 import remarkMath from 'remark-math'
 import remarkSectionize from 'remark-sectionize'
-import rehypeDocument from 'rehype-document'
 
 import { pluginCollapsibleSections } from '@expressive-code/plugin-collapsible-sections'
 import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
@@ -81,34 +80,34 @@ export default defineConfig({
   devToolbar: {
     enabled: false,
   },
+  // Astro 7 defaults to JSX-style whitespace handling, which would drop the
+  // spaces around <Link>s and badges written on their own lines in the pages.
+  compressHTML: true,
   markdown: {
-    syntaxHighlight: false,
-    rehypePlugins: [
-      [
-        rehypeDocument,
-        {
-          css: 'https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css',
-        },
-      ],
-      [
-        rehypeExternalLinks,
-        {
-          target: '_blank',
-          rel: ['nofollow', 'noreferrer', 'noopener'],
-        },
-      ],
-      rehypeHeadingIds,
-      rehypeKatex,
-      [
-        rehypePrettyCode,
-        {
-          theme: {
-            light: 'github-light',
-            dark: 'github-dark',
+    // Astro 7's default processor (Sätteri) doesn't run remark/rehype plugins.
+    processor: unified({
+      remarkPlugins: [remarkMath, remarkEmoji, remarkSectionize],
+      rehypePlugins: [
+        [
+          rehypeExternalLinks,
+          {
+            target: '_blank',
+            rel: ['nofollow', 'noreferrer', 'noopener'],
           },
-        },
+        ],
+        rehypeHeadingIds,
+        rehypeKatex,
+        [
+          rehypePrettyCode,
+          {
+            theme: {
+              light: 'github-light',
+              dark: 'github-dark',
+            },
+          },
+        ],
       ],
-    ],
-    remarkPlugins: [remarkMath, remarkEmoji, remarkSectionize],
+    }),
+    syntaxHighlight: false,
   },
 })

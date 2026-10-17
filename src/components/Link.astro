@@ -14,14 +14,15 @@ const { href, external, class: className, underline, ...rest } = Astro.props
 
 <a
   href={href}
-  target={external ? '_blank' : '_self'}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener noreferrer' : undefined}
   class={cn(
-    'inline-block transition-colors duration-300 ease-in-out',
+    // underlined links sit in running text, so let them wrap across lines
+    underline ? 'inline' : 'inline-block',
+    'transition-colors duration-300 ease-in-out',
     underline &&
       'underline decoration-muted-foreground underline-offset-[3px] hover:decoration-foreground',
     className,
   )}
   {...rest}
->
-  <slot />
-</a>
+><slot /></a>

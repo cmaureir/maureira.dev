@@ -2,3 +2,5 @@ allowBuilds:
   '@tailwindcss/oxide': true
   esbuild: true
   sharp: true
+patchedDependencies:
+  rehype-pretty-code@0.14.5: patches/rehype-pretty-code@0.14.5.patch

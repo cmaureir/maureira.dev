@@ -2,7 +2,7 @@ import * as React from 'react'
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
-  MoreHorizontalIcon,
+  EllipsisIcon,
 } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
@@ -11,7 +11,6 @@ import { Button, buttonVariants } from '@/components/ui/button'
 function Pagination({ className, ...props }: React.ComponentProps<'nav'>) {
   return (
     <nav
-      role="navigation"
       aria-label="pagination"
       data-slot="pagination"
       className={cn('mx-auto flex w-full justify-center', className)}
@@ -118,7 +117,7 @@ function PaginationEllipsis({
       className={cn('flex size-9 items-center justify-center', className)}
       {...props}
     >
-      <MoreHorizontalIcon className="size-4" />
+      <EllipsisIcon className="size-4" />
       <span className="sr-only">More pages</span>
     </span>
   )
@@ -156,12 +155,6 @@ const PaginationComponent: React.FC<PaginationProps> = ({
             </PaginationLink>
           </PaginationItem>
         ))}
-
-        {totalPages > 5 && (
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
-        )}
 
         <PaginationItem>
           <PaginationNext

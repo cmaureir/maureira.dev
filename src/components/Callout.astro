@@ -17,7 +17,7 @@ const calloutConfig = {
   warning: {
     style: 'border-amber-500 dark:bg-amber-950/5',
     textColor: 'text-amber-700 dark:text-amber-300',
-    icon: 'lucide:alert-triangle',
+    icon: 'lucide:triangle-alert',
   },
   danger: {
     style: 'border-red-500 dark:bg-red-950/5',
@@ -47,7 +47,7 @@ const calloutConfig = {
   theorem: {
     style: 'border-indigo-500 dark:bg-indigo-950/10',
     textColor: 'text-indigo-700 dark:text-indigo-400',
-    icon: 'lucide:check-circle',
+    icon: 'lucide:circle-check-big',
   },
   lemma: {
     style: 'border-indigo-400 dark:bg-indigo-950/10',
@@ -67,12 +67,12 @@ const calloutConfig = {
   conjecture: {
     style: 'border-fuchsia-500 dark:bg-fuchsia-950/10',
     textColor: 'text-fuchsia-700 dark:text-fuchsia-300',
-    icon: 'lucide:help-circle',
+    icon: 'lucide:circle-help',
   },
   proof: {
     style: 'border-amber-500 dark:bg-amber-950/10',
     textColor: 'text-amber-700 dark:text-amber-300',
-    icon: 'lucide:check-square',
+    icon: 'lucide:square-check-big',
   },
   remark: {
     style: 'border-sky-300 dark:bg-sky-950/10',
@@ -97,7 +97,7 @@ const calloutConfig = {
   explanation: {
     style: 'border-sky-500 dark:bg-sky-950/10',
     textColor: 'text-sky-600 dark:text-sky-300',
-    icon: 'lucide:help-circle',
+    icon: 'lucide:circle-help',
   },
   exercise: {
     style: 'border-pink-600 dark:bg-pink-950/5',
@@ -107,7 +107,7 @@ const calloutConfig = {
   problem: {
     style: 'border-pink-600 dark:bg-pink-950/5',
     textColor: 'text-pink-700 dark:text-pink-300',
-    icon: 'lucide:alert-circle',
+    icon: 'lucide:circle-alert',
   },
   answer: {
     style: 'border-pink-300 dark:bg-pink-950/5',
@@ -117,7 +117,7 @@ const calloutConfig = {
   solution: {
     style: 'border-pink-300 dark:bg-pink-950/5',
     textColor: 'text-pink-500 dark:text-pink-200',
-    icon: 'lucide:check-circle-2',
+    icon: 'lucide:circle-check',
   },
   summary: {
     style: 'border-emerald-600 dark:bg-emerald-950/10',
@@ -163,7 +163,7 @@ const { title, variant = 'note', defaultOpen = true, ...rest } = Astro.props
   >
     <Icon
       name={calloutConfig[variant].icon}
-      class={cn('mr-2 size-4 flex-shrink-0', calloutConfig[variant].textColor)}
+      class={cn('mr-2 size-4 shrink-0', calloutConfig[variant].textColor)}
     />
     <span class={cn('font-medium mr-2', calloutConfig[variant].textColor)}>
       {capitalize(variant)}

@@ -15,13 +15,13 @@ const blog = await getRecentPosts(SITE.featuredPostCount)
   <PageHead slot="head" title="Cristián's Home" />
   <section>
     <div class="rounded-lg border h-[50dvh] flex flex-col place-content-center text-center">
-    <a href="/about"><img class="mx-auto rounded-full h-[15dvh] my-10 grayscale hover:grayscale-0" src="/static/me.jpg"/></a>
-    <h2 class="xl:text-xl lg:text-md md:text-sm text-lg">Hello 👋 my name is</h2>
+    <a href="/about"><img class="mx-auto rounded-full h-[15dvh] my-10 grayscale hover:grayscale-0" src="/static/me.jpg" alt="Photo of Cristián, link to the About page"/></a>
+    <p class="xl:text-xl lg:text-base md:text-sm text-lg">Hello 👋 my name is</p>
     <h1 class="xl:text-5xl lg:text-3xl md:text-3xl text-2xl py-5">Cristián</h1>
-    <h2 class="xl:text-xl lg:text-md md:text-sm pb-10">
+    <p class="xl:text-xl lg:text-base md:text-sm pb-10">
       I'm a FLOSS enthusiast,<br>helping with <a class="underline" href="/community">conferences and communities</a>.<br>
-      Currently working at <a class="underline" target="_blank" href="https://qt.io">Qt</a>.
-    </h2>
+      Currently working at <a class="underline" target="_blank" rel="noopener noreferrer" href="https://qt.io">Qt</a>.
+    </p>
     </div>
   </section>
   <section class="flex flex-col gap-y-4">

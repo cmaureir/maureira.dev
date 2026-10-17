@@ -1,7 +1,7 @@
-diff --git a/node_modules/rehype-pretty-code/dist/index.js b/node_modules/rehype-pretty-code/dist/index.js
-index 9142858..9f59dc9 100644
---- a/node_modules/rehype-pretty-code/dist/index.js
-+++ b/node_modules/rehype-pretty-code/dist/index.js
+diff --git a/dist/index.js b/dist/index.js
+index 2eb6dd6072289505f3ec9579e16e5c34bd3a1638..8a5d3ebb1787ecb26e6f2e84de4c959f956404ab 100644
+--- a/dist/index.js
++++ b/dist/index.js
 @@ -22,7 +22,7 @@ function isInlineCode(element, parent, bypass = false) {
    return element.tagName === "code" && isElement(parent) && parent.tagName !== "pre" || element.tagName === "inlineCode";
  }
